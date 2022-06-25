@@ -1,0 +1,77 @@
+.mncontainer{
+    background-color :azure;
+    margin : 0px 16px;
+}
+
+
+.mnheader {
+    margin: 20px auto;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.mnbody{
+    background-color: azure;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+.card-body {
+    width: 20%;
+    min-width: 300px;
+    max-width: 350px;
+    background: aliceblue;
+    padding: 8px;
+    margin: 24px 8px;
+    font-size: 14px;
+    padding: 8px!important; 
+    flex: inherit;
+    justify-content: center;
+    position: relative;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    min-height: 150px;
+}
+
+
+
+a.btn.btn-primary {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+}
+
+.pindecator{
+    width: 20px;
+    height: 20px;
+    background-color:chocolate;
+    text-align: center;
+    position: absolute;
+    top:3px;
+    right: 13px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.form {
+    width: 100%;
+}
+
+.mndropdown {
+    display: flex;
+}
+
+span.input-group-text{
+    min-width: 70px;
+    text-align: center;
+
+}
+
+.noteButtons {
+    text-align: center;
+}
+

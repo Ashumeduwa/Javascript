@@ -1,17 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- <script src="/compare.js"></script>
-   <script src="/object.js"></script> -->
-   <!-- <script src="/prototype.js"></script> -->
-   <!-- <script src="/inheritance.js"></script> -->
-   <script src="/jsclass.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <title>Local storage tasks</title>
 </head>
+
 <body>
-    
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">My tasks</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="mncontainer">
+
+    <div class="mnheader">
+
+      <div class="form">
+        <div class="input-group input-group-sm mb-2">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+          <input type="text" class="form-control" id="txtTitle" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm">
+        </div>
+      </div>
+      <div class="form url">
+        <div class="input-group input-group-sm mb-2">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Details</span>
+          <input type="text" class="form-control urlLocation" id="txtURL" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm">
+        </div>
+      </div>
+
+      <!-- THis is dropdown option -->
+
+      <div class="mndropdown input-group input-group-sm mb-2">
+        <span class="input-group-text mb-2" id="inputGroup-sizing-sm">Details</span>
+        <select class="form-control form-control-sm mb-2" id="mnOptions">
+          <option>EOD</option>
+          <option>Urgent</option>
+          <option>By week</option>
+          <option>Normal</option>
+        </select>
+      </div>
+
+      <!-- dropdown ends here -->
+
+      <div class="noteButtons">
+        <div class="col-12">
+          <button class="btn btn-primary" id="mnbutton" type="submit">Add Task</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mnbody" id="card-body">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Completed</a>
+        <div class="pindecator"><b>P</b>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Completed</a>
+        <div class="pindecator"><b>P</b>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Completed</a>
+        <div class="pindecator"><b>P</b>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <script src="/script.js"></script>
 </body>
+
 </html>
