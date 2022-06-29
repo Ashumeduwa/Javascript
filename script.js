@@ -1,9 +1,3 @@
-
-// Defining global variables
-
-let btnclick = document.querySelector('.btn-primary');
-// let objnotes = [];
-
 // Defining class
 
 class mNpotes {
@@ -39,37 +33,32 @@ class mNpotes {
         localStorage.setItem('Details', JSON.stringify(notesDetails));
         localStorage.setItem('Priority', JSON.stringify(notesPriority));
         cardBody.innerHTML = "";
-
         this.LoadApps(notesTitle, notesDetails, notesPriority);
-
         //end of initiating local storage and saving
 
-        //for loop to print all arrays
     }
 
+    // Adding new call function loadApps () to load cards based on priority
     LoadApps = (notesTitle, notesDetails, notesPriority) => {
-        let mnPriorityArry = ['EOD','Urgent','By week','Normal']
-        mnPriorityArry.forEach(element => {
-            
-            console.log(element);
+        let mnPriorityArry = ['Urgent', 'EOD', 'By week', 'Normal'] //loop to set priority
+        mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
+            let cardPriority = element;
+            notesTitle.forEach((Element, index) => { //loop to [print] elements
+                // console.log(notesTitle[index]);
+                let cardBody = document.getElementById('card-body')
+                if (cardPriority == notesPriority[index]) {
+                    let htmlString = `
+                <div class="card-body">
+                <h5 class="card-title">${notesTitle[index]}</h5>
+                <p class="card-text">${notesDetails[index]}</p>
+                <h5 class="card-title">${notesPriority[index]}</h5>
+                <a href="#" class="btn btn-primary">Completed</a>
+              </div>
+                `
+                    cardBody.innerHTML += htmlString;
+                }
+            })
         });
-
-        // console.log(mnPriorityArry);
-        notesTitle.forEach((Element, index) => {
-            // console.log(notesTitle[index]);
-            let cardBody = document.getElementById('card-body')
-            let htmlString = `
-            <div class="card-body">
-            <h5 class="card-title">${notesTitle[index]}</h5>
-            <p class="card-text">${notesDetails[index]}</p>
-            <h5 class="card-title">${notesPriority[index]}</h5>
-            <a href="#" class="btn btn-primary">Completed</a>
-          </div>
-            `
-            cardBody.innerHTML += htmlString;
-        })
-
-
     }
 
     mnValidation(mnobject) {
@@ -85,6 +74,7 @@ class mNpotes {
 
 
 // Add event for sumbit button
+let btnclick = document.querySelector('.btn-primary');
 
 btnclick.addEventListener('click', (e) => {
 
@@ -105,10 +95,24 @@ btnclick.addEventListener('click', (e) => {
 
 })
 
+
 window.onload = (event) => {
+
+    loadcontent();
+
+};
+
+loadcontent = () => {
     notesTitle = JSON.parse(localStorage.getItem('Title'));
     notesDetails = JSON.parse(localStorage.getItem('Details'));
     notesPriority = JSON.parse(localStorage.getItem('Priority'));
     let mnobject1 = new mNpotes(notesTitle, notesDetails, notesPriority);
     mnobject1.LoadApps(notesTitle, notesDetails, notesPriority);
-};
+}
+
+
+let btnclickClear = document.getElementById('mnbuttonClear')
+btnclickClear.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
+})
