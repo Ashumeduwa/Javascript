@@ -38,12 +38,36 @@
     min-height: 150px;
 }
 
+.cardPriority{
+    position: absolute;
+    bottom: 0px;
+    padding: 0px 10px;
+}
+
+a.btnEOD {
+    background: green;
+}
+
+a.btnUrgent {
+    background: red;
+}
+
+a.btnNormal{
+    background :burlywood;
+
+}
 
 
 a.btn.btn-primary {
     position: absolute;
-    bottom: 3px;
+    top: 3px;
     right: 3px;
+    border: none;
+}
+
+h6.card-title {
+    max-width: 230px;
+    
 }
 
 .pindecator{
