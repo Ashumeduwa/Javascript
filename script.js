@@ -1,3 +1,12 @@
+mnLoadLocal = () =>{
+    var notesTitle = JSON.parse(localStorage.getItem("Title"));
+    var notesDetails = JSON.parse(localStorage.getItem("Details"));
+    var notesPriority = JSON.parse(localStorage.getItem("Priority"));
+    var notesDate = JSON.parse(localStorage.getItem("mnDates"));
+    return {notesTitle,notesDetails,notesPriority,notesDate};
+}
+
+
 // Defining class
 
 class mNpotes {
@@ -15,7 +24,9 @@ class mNpotes {
         let notesDetails = new Array();
         let notesPriority = new Array();
         let notesDate = new Array();
+
         const cardBody = document.getElementById('card-body')
+
         notesTitle = JSON.parse(localStorage.getItem('Title'));
         notesDetails = JSON.parse(localStorage.getItem('Details'));
         notesPriority = JSON.parse(localStorage.getItem('Priority'));
@@ -25,7 +36,7 @@ class mNpotes {
             notesTitle = [];
             notesDetails = [];
             notesPriority = [];
-            notesDate= [];
+            notesDate = [];
         }
 
         notesTitle.push(mnobject.mnTitle);
@@ -38,14 +49,15 @@ class mNpotes {
         localStorage.setItem('Priority', JSON.stringify(notesPriority));
         localStorage.setItem('mnDates', JSON.stringify(notesDate));
         cardBody.innerHTML = "";
-        this.LoadApps(notesTitle, notesDetails, notesPriority,notesDate);
+        let mnPriorityArry = ['Urgent priority task', 'Task', 'Notes', 'Normal Task (EOD)', 'Weekly task']
+        this.LoadApps(notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry);
         //end of initiating local storage and saving
 
     }
 
     // Adding new call function loadApps () to load cards based on priority
-    LoadApps = (notesTitle, notesDetails, notesPriority,notesDate) => {
-        let mnPriorityArry = ['Urgent priority task', 'Task', 'Notes', 'Normal Task (EOD)', 'Weekly task'] //loop to set priority
+    LoadApps = (notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry) => {
+        //loop to set priority
         mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
             let cardPriority = element;
             notesTitle.forEach((Element, index) => { //loop to [print] elements
@@ -55,9 +67,9 @@ class mNpotes {
                     let htmlString = `
                 <div class="card-body">
                 <h6 class="card-title">${notesTitle[index]}</h6>
-                <p class="card-text">${notesDetails[index]}</p>
+                <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
                 <p class="card-title cardPriority">${notesDate[index]}</p>
-                <a href="#" class="btn btn-primary btn${notesPriority[index]}">${notesPriority[index]}</a>
+                <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]}">${notesPriority[index]}</a>
               </div>
                 `
                     cardBody.innerHTML += htmlString;
@@ -74,6 +86,8 @@ class mNpotes {
         }
 
     }
+
+
 
 }
 
@@ -96,30 +110,36 @@ btnclick.addEventListener('click', (e) => {
     if (formValidation == "True") {
         mnobject.addValue(mnobject);
         clearContent();
-
     }
 
 })
 
 
 window.onload = (event) => {
-
     loadcontent();
-
 };
 
-clearContent = () =>{
-    document.getElementById('txtTitle').value="";
-    document.getElementById('txtURL').value="";
+clearContent = () => {
+    document.getElementById('txtTitle').value = "";
+    document.getElementById('txtURL').value = "";
 }
 
+
 loadcontent = () => {
-    notesTitle = JSON.parse(localStorage.getItem('Title'));
-    notesDetails = JSON.parse(localStorage.getItem('Details'));
-    notesPriority = JSON.parse(localStorage.getItem('Priority'));
-    notesDate = JSON.parse(localStorage.getItem('mnDates'));
+
+
+    let mnstorageValue = mnLoadLocal();
+
+    let notesTitle = mnstorageValue.notesTitle;
+    let notesDetails = mnstorageValue.notesDetails;
+    let notesPriority = mnstorageValue.notesPriority;
+    let notesDate = mnstorageValue.notesDate
+
+if(notesTitle == null){}else{
+    let mnPriorityArry = ['Urgent priority task', 'Task', 'Notes', 'Normal Task (EOD)', 'Weekly task']
     let mnobject1 = new mNpotes(notesTitle, notesDetails, notesPriority);
-    mnobject1.LoadApps(notesTitle, notesDetails, notesPriority,notesDate);
+    mnobject1.LoadApps(notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry);
+}
 }
 
 
@@ -128,3 +148,37 @@ btnclickClear.addEventListener('click', () => {
     localStorage.clear();
     location.reload();
 })
+
+mnDeleteNotes = (index) => {
+
+let mnstorageValue = mnLoadLocal();
+
+let notesTitle = mnstorageValue.notesTitle;
+let notesDetails = mnstorageValue.notesDetails;
+let notesPriority = mnstorageValue.notesPriority;
+let notesDate = mnstorageValue.notesDate
+
+// let notesTitle = JSON.parse(localStorage.getItem("Title"));
+// let notesDetails = JSON.parse(localStorage.getItem("Details"));
+// let notesPriority = JSON.parse(localStorage.getItem("Priority"));
+// let notesDate = JSON.parse(localStorage.getItem("mnDates"));
+
+    console.log(notesTitle)
+    console.log(index,typeof(notesTitle));
+
+    notesTitle.splice(index,1);
+    notesDetails.splice(index,1);
+    notesPriority.splice(index,1);
+    notesDate.splice(index,1);
+
+
+    localStorage.setItem('Title', JSON.stringify(notesTitle));
+    localStorage.setItem('Details', JSON.stringify(notesDetails));
+    localStorage.setItem('Priority', JSON.stringify(notesPriority));
+    localStorage.setItem('mnDates', JSON.stringify(notesDate));
+
+    location.reload();
+
+}
+
+
