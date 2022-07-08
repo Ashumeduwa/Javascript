@@ -75,9 +75,9 @@ class mNpotes {
                     let htmlString = `
                 <div class="card-body">
                 <h6 class="card-title">${notesTitle[index]}</h6>
-                <p class="cardETA">${mnotesEtanEta[index]}</p>
+                <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
                 <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
-                <p class="card-title cardPriority">${notesDate[index]}</p>
+                <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                 <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]}">${notesPriority[index]}</a>
                 <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
               </div>
