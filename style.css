@@ -23,7 +23,7 @@
 
 .card-body {
     width: 20%;
-    min-width: 300px;
+    /* min-width: 300px; */
     max-width: 350px;
     background: aliceblue;
     padding: 8px;
@@ -34,7 +34,7 @@
     justify-content: center;
     position: relative;
     box-shadow: 10px 10px 5px #aaaaaa;
-    min-height: 150px;
+    /* min-height: 150px; */
 }
 
 .cardPriority{
@@ -45,27 +45,37 @@
 
 }
 
-a.btnEOD {
-    background: green;
-}
 
 a.btnUrgent {
     background: red;
 }
 
 a.btnNormal{
-    background :burlywood;
+    background-color: #14A06B;
 
 }
 
-
+a.mnComplete {
+    display: none;
+    
+}
 a.btn.btn-primary {
     position: absolute;
     bottom: -50px;
     right: 3px;
     border: none;
-    background-color: crimson;
+    z-index: 1;
 }
+
+
+a.btn.btn-primary:hover {
+    display: none!important;
+    
+}
+
+a.btn.btn-primary:hover  + a.mnComplete{
+    display: block;
+  }
 
 h6.card-title {
     max-width: 230px;
@@ -101,3 +111,30 @@ span.input-group-text{
     text-align: center;
 }
 
+input#mnDate {
+    border: none;
+    height: 30px;
+    padding: 0px 10px;
+    border-radius: 4px;
+    margin: 0px 5px;
+    /* border-block-start-style: revert; */
+    border-bottom: groove;
+}
+
+p.cardETA {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border-bottom: 1px solid;
+    padding: 0px 8px;
+    /* border-radius: 50%; */
+}
+
+.mnalert {
+    text-align: center;
+    font-size: 14px;
+    padding: 8px 8px 0px 8px;
+    height: 0px;
+    overflow: hidden;
+    transition: height 10s;
+}
