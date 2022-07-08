@@ -17,6 +17,7 @@
     position: relative;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 
 
@@ -24,7 +25,7 @@
 .card-body {
     width: 20%;
     /* min-width: 300px; */
-    max-width: 350px;
+    /* max-width: 350px; */
     background: aliceblue;
     padding: 8px;
     margin: 24px 8px;
@@ -34,6 +35,7 @@
     justify-content: center;
     position: relative;
     box-shadow: 10px 10px 5px #aaaaaa;
+    word-wrap: break-word;
     /* min-height: 150px; */
 }
 
@@ -77,10 +79,7 @@ a.btn.btn-primary:hover  + a.mnComplete{
     display: block;
   }
 
-h6.card-title {
-    max-width: 230px;
-    
-}
+
 
 .pindecator{
     width: 20px;
@@ -127,6 +126,7 @@ p.cardETA {
     top: 0px;
     border-bottom: 1px solid;
     padding: 0px 8px;
+    top: -16px;
     /* border-radius: 50%; */
 }
 
