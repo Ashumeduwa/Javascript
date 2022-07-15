@@ -78,6 +78,7 @@ class mNpotes {
                 <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
                 <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
                 <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
+                <img src="/images/edit.png" id="${[index]}" onclick="editcard(${[index]})" class="editButton" width="20px;" height="20px;">
                 <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]}">${notesPriority[index]}</a>
                 <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
               </div>
@@ -100,6 +101,8 @@ class mNpotes {
 
     }
 
+
+}editcard = (index)=>{
 
 }
 
@@ -203,11 +206,6 @@ mnDeleteNotes = (index) => {
     let notesDate = mnstorageValue.notesDate;
     let notesEta = mnstorageValue.notesEta;
 
-    // let notesTitle = JSON.parse(localStorage.getItem("Title"));
-    // let notesDetails = JSON.parse(localStorage.getItem("Details"));
-    // let notesPriority = JSON.parse(localStorage.getItem("Priority"));
-    // let notesDate = JSON.parse(localStorage.getItem("mnDates"));
-
     console.log(notesTitle)
     console.log(index, typeof (notesTitle));
 
@@ -230,4 +228,96 @@ mnDeleteNotes = (index) => {
 
 //end of delete function
 
+//cancel button of editable form
 
+
+
+
+
+//end of cancel button of editable formi
+
+
+//cancel button of editable form
+
+
+
+
+// click on editables
+
+
+editcard = (index) => {
+    console.log('clicked');
+
+    notesTitle = JSON.parse(localStorage.getItem('Title'));
+    notesDetails = JSON.parse(localStorage.getItem('Details'));
+    notesPriority = JSON.parse(localStorage.getItem('Priority'));
+    notesDate = JSON.parse(localStorage.getItem('mnDates'));
+    notesEta = JSON.parse(localStorage.getItem('lmnEta'));
+    console.log(notesTitle[index]);
+
+    let editable = document.querySelector('.editableback');
+    editable.classList.add("mnInvisible");
+    editable.classList.remove("mnVisible");
+    document.getElementById('txtTitleUpdate').value = notesTitle[index];
+    document.getElementById('txtURLUpdate').value = notesDetails[index];
+    document.getElementById('mnOptionsUpdate').value = notesPriority[index];
+    document.getElementById('mnDateUpdate').value = notesEta[index];
+    
+    
+
+
+let HTMLstring = `
+    <div class="noteButtons">
+      <div class="col-12">
+        <button class="btn btn-primary" id="${[index]}" onclick="updateSave(${[index]})" type="submit">Save</button>
+        <button class="btn btn-primary" id="${[index]}" onclick="editcardCancel()" type="submit">Cancel</button>
+      </div>
+    </div>`
+
+document.getElementById('notebuttonUpdates').innerHTML = HTMLstring;
+}  
+
+
+editcardCancel = () => {
+    console.log('clicked');
+    let editable = document.querySelector('.editableback');
+    editable.classList.add("mnVisible");
+    editable.classList.remove("mnInvisible");
+}
+
+
+updateSave = (index) => {
+
+    console.log('Save')
+    notesTitle = JSON.parse(localStorage.getItem('Title'));
+    notesDetails = JSON.parse(localStorage.getItem('Details'));
+    notesPriority = JSON.parse(localStorage.getItem('Priority'));
+    // notesDate = JSON.parse(localStorage.getItem('mnDates'));
+    notesEta = JSON.parse(localStorage.getItem('lmnEta'));
+
+    notesTitle[index] = document.getElementById('txtTitleUpdate').value;
+    notesDetails[index] = document.getElementById('txtURLUpdate').value;
+    notesPriority[index] = document.getElementById('mnOptionsUpdate').value;
+    notesEta[index] = document.getElementById('mnDateUpdate').value;
+
+
+    localStorage.setItem('Title', JSON.stringify(notesTitle));
+    localStorage.setItem('Details', JSON.stringify(notesDetails));
+    localStorage.setItem('Priority', JSON.stringify(notesPriority));
+    // localStorage.setItem('mnDates', JSON.stringify(notesDate));
+    localStorage.setItem('lmnEta', JSON.stringify(notesEta));
+    location.reload();
+
+
+} 
+
+// end of click on editables
+
+// save button of the edit form
+// let mnbuttonSave = document.getElementById('mnbuttonEdit');
+// mnbuttonSave.addEventListener('click',()=>{
+//     console.log(editcard(index))
+//     document.getElementById('txtTitleUpdate').value = "sadasd"
+// });
+
+// end save button of the edit form
