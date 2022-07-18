@@ -74,11 +74,17 @@ class mNpotes {
                 if (cardPriority == notesPriority[index]) {
                     let htmlString = `
                 <div class="card-body">
-                <h6 class="card-title">${notesTitle[index]}</h6>
+                <div class="mnoptions">
+                <img src="/images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
                 <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
-                <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
+                
+                </div>
+                
+                <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                 <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
-                <img src="/images/edit.png" id="${[index]}" onclick="editcard(${[index]})" class="editButton" width="20px;" height="20px;">
+                <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
+               
+                
                 <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]}">${notesPriority[index]}</a>
                 <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
               </div>
@@ -93,16 +99,16 @@ class mNpotes {
         if ((mnobject.mnTitle).length < 2 || (mnobject.mnEta).length < 2) {
             mnNotify("Validation");
             return "False";
-            
+
         } else {
             return "True";
-            
+
         }
 
     }
 
 
-}editcard = (index)=>{
+} editcard = (index) => {
 
 }
 
@@ -140,8 +146,7 @@ mnNotify = (fn) => {
         let x = document.getElementById('mnalert')
         x.innerText = "Your data is saved"
         x.style = "background-color:#008000; color:white; height:auto!important";
-    } else if(fn == "Validation")
-    {
+    } else if (fn == "Validation") {
         let x = document.getElementById('mnalert')
         x.innerText = "Please fill Title and ETA"
         x.style = "background-color:#ff0000; color:white; height:auto!important";
@@ -231,15 +236,10 @@ mnDeleteNotes = (index) => {
 //cancel button of editable form
 
 
-
-
-
 //end of cancel button of editable formi
 
 
 //cancel button of editable form
-
-
 
 
 // click on editables
@@ -262,11 +262,11 @@ editcard = (index) => {
     document.getElementById('txtURLUpdate').value = notesDetails[index];
     document.getElementById('mnOptionsUpdate').value = notesPriority[index];
     document.getElementById('mnDateUpdate').value = notesEta[index];
-    
-    
 
 
-let HTMLstring = `
+
+
+    let HTMLstring = `
     <div class="noteButtons">
       <div class="col-12">
         <button class="btn btn-primary" id="${[index]}" onclick="updateSave(${[index]})" type="submit">Save</button>
@@ -274,8 +274,8 @@ let HTMLstring = `
       </div>
     </div>`
 
-document.getElementById('notebuttonUpdates').innerHTML = HTMLstring;
-}  
+    document.getElementById('notebuttonUpdates').innerHTML = HTMLstring;
+}
 
 
 editcardCancel = () => {
@@ -309,15 +309,21 @@ updateSave = (index) => {
     location.reload();
 
 
-} 
+}
 
-// end of click on editables
+// ---------------------------------------------------------------------------
 
-// save button of the edit form
-// let mnbuttonSave = document.getElementById('mnbuttonEdit');
-// mnbuttonSave.addEventListener('click',()=>{
-//     console.log(editcard(index))
-//     document.getElementById('txtTitleUpdate').value = "sadasd"
-// });
+// Filters
 
-// end save button of the edit form
+let mnCheckBox = document.getElementsByClassName('mnFilterNow');
+
+
+Array.from(mnCheckBox).forEach(function(element,index) {
+    element.addEventListener('change', ()=>{
+        console.log(mnCheckBox[index].value);
+        if(mnCheckBox[index].value == 'Today') 
+        {
+            console.log('First button pressed');
+        }
+    });
+  });   

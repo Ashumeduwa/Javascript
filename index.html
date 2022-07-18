@@ -23,11 +23,10 @@
     </div>
   </nav>
 
-
+  <div class="mnalert" id="mnalert">
+    <p>Title and ETA is mendatory, please update these fields </p>
+  </div>
   <div class="mncontainer">
-    <div class="mnalert" id="mnalert">
-      <p>Title and ETA is mendatory, please update these fields </p>
-    </div>
 
     <div class="mnheader">
 
@@ -77,11 +76,26 @@
       </div>
     </div>
 
+    <div class="mnfilters">
+      <div class="form-check form-switch">
+        <input class="form-check-input mnFilterNow" type="checkbox" id="flexSwitchCheckDefault" value="Today">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Today</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input mnFilterNow" type="checkbox" id="flexSwitchCheckDefault"  value="Fdate">>
+        <label class="form-check-label" for="flexSwitchCheckDefault">Future dated</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input mnFilterNow" type="checkbox" id="flexSwitchCheckDefault"  value="Overdue">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Overdue</label>
+      </div>
+    </div>
+  </div>
     <!-- date picker -->
     <div class="mnbody" id="card-body">
     </div>
 
-  </div>
+ 
 
 
   <!-- editable forms -->

@@ -1,14 +1,33 @@
-.mncontainer{
-    margin : 0px 16px;
+.mncontainer {
+    padding: 8px;
+    /* display: flex; */
+    max-width: 897px;
+    flex-wrap: wrap;
+    margin: auto;
+   
+    /* background: aliceblue; */
+    border-bottom: 1px solid #888888;
 }
 
+.mnfilters {
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    flex-wrap: wrap;
+}
+
+.form-check.form-switch {
+    margin: 0px 16px;
+}
 
 .mnheader {
     margin: 20px auto;
     max-width: 500px;
-    display: flex;
+    width: 70%;
+    /* display: flex; */
     flex-direction: column;
-
+    /* display: flex; */
 }
 
 .mnbody{
@@ -17,6 +36,7 @@
     position: relative;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0px 32px;
 
 }
 
@@ -24,9 +44,9 @@
 
 .card-body {
     width: 20%;
-    /* min-width: 300px; */
+    min-width: 300px;
     /* max-width: 350px; */
-    background: aliceblue;
+    background: #F8F8F8F8;
     padding: 8px;
     margin: 24px 8px;
     font-size: 14px;
@@ -39,12 +59,13 @@
     /* min-height: 150px; */
 }
 
-.cardPriority{
+.cardPriority {
     position: absolute;
     bottom: -22px;
-    background: darkseagreen;
+    /* background: #0F0F0F; */
     padding: 0px 10px;
-
+    font-size: 10px;
+    color: black;
 }
 
 
@@ -57,6 +78,15 @@ a.btnNormal{
 
 }
 
+.mnoptions {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background: antiquewhite; */
+    border-bottom: 1px solid #0303;
+}
+
 a.mnComplete {
     display: none;
     
@@ -66,6 +96,7 @@ a.btn.btn-primary {
     bottom: -50px;
     right: 3px;
     border: none;
+    font-size: inherit;
 
 }
 
@@ -121,13 +152,14 @@ input#mnDate {
 }
 
 p.cardETA {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    border-bottom: 1px solid;
-    padding: 0px 8px;
-    top: -16px;
-    /* border-radius: 50%; */
+    /* position: absolute; */
+    /* right: 0px; */
+    /* border-bottom: 1px solid; */
+    /* padding: 0px 8px; */
+    /* top: -16px; */
+    /* align-items: center; */
+    font-size: 10px;
+    display: initial;
 }
 
 .mnalert {
@@ -191,9 +223,11 @@ input#mnDateUpdate {
 /* //pencil item CSS */
 
 img.editButton {
-    position: absolute;
-    right: 4px;
-    bottom: 4px;
+    /* position: absolute; */
+    /* right: 4px; */
+    /* bottom: 4px; */
+    width: 10px;
+    /* padding: 4px; */
 }
 
 
