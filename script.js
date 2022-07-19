@@ -89,7 +89,7 @@ class mNpotes {
                             let htmlString = `
                         <div class="card-body">
                         <div class="mnoptions">
-                        <img src="/images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
+                        <img src="images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
                         <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
                         </div>
                         <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
