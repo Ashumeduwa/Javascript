@@ -5,10 +5,17 @@ mnLoadLocal = () => {
     var notesPriority = JSON.parse(localStorage.getItem("Priority"));
     var notesDate = JSON.parse(localStorage.getItem("mnDates"));
     var notesEta = JSON.parse(localStorage.getItem("lmnEta"));
-
     return { notesTitle, notesDetails, notesPriority, notesDate, notesEta};
 }
 
+mnLoadLocalComplete = () => {
+    var TitleComplete = JSON.parse(localStorage.getItem("TitleComplete"));
+    var DetailsComplete = JSON.parse(localStorage.getItem("DetailsComplete"));
+    var PriorityComplete = JSON.parse(localStorage.getItem("PriorityComplete"));
+    var DateComplete = JSON.parse(localStorage.getItem("mnDatesComplete"));
+    var EtaComplete = JSON.parse(localStorage.getItem("lmnEtaComplete"));
+    return { TitleComplete, DetailsComplete, PriorityComplete, DateComplete, EtaComplete};
+}
 
 // Defining class
 
@@ -336,18 +343,45 @@ btnclickClear.addEventListener('click', () => {
 
 //delete function --- it will be triggered from HTML not by any event lister
 mnDeleteNotes = (index) => {
+    //loading completed items
+    let mnComplete = mnLoadLocalComplete();
+    var TitleComplete = mnComplete.TitleComplete;
+    var DetailsComplete = mnComplete.DetailsComplete;
+    var PriorityComplete = mnComplete.PriorityComplete;
+    var DateComplete = mnComplete.DateComplete;
+    var EtaComplete = mnComplete.EtaComplete;
 
+    if (TitleComplete == null) {
+        console.log('Taking as null')
+        TitleComplete = [];
+        DetailsComplete = [];
+        PriorityComplete = [];
+        DateComplete = [];
+        EtaComplete = [];
+        console.log('it is a null')
+        console.log(typeof(TitleComplete))
+    }
+
+
+
+    //load active arrays
     let mnstorageValue = mnLoadLocal();
-
     let notesTitle = mnstorageValue.notesTitle;
     let notesDetails = mnstorageValue.notesDetails;
     let notesPriority = mnstorageValue.notesPriority;
     let notesDate = mnstorageValue.notesDate;
     let notesEta = mnstorageValue.notesEta;
 
-    console.log(notesTitle)
-    console.log(index, typeof (notesTitle));
 
+        //pushing deleted items to active arrays
+    TitleComplete.push(notesTitle[index]);
+    DetailsComplete.push(notesDetails[index]);
+    PriorityComplete.push(notesPriority[index]);
+    DateComplete.push(notesDate[index]);
+    EtaComplete.push(notesEta[index]);
+
+    
+        //Deleteing active arrays
     notesTitle.splice(index, 1);
     notesDetails.splice(index, 1);
     notesPriority.splice(index, 1);
@@ -355,28 +389,23 @@ mnDeleteNotes = (index) => {
     notesEta.splice(index, 1);
 
 
+        //Setting active arrays
     localStorage.setItem('Title', JSON.stringify(notesTitle));
     localStorage.setItem('Details', JSON.stringify(notesDetails));
     localStorage.setItem('Priority', JSON.stringify(notesPriority));
     localStorage.setItem('mnDates', JSON.stringify(notesDate));
     localStorage.setItem('lmnEta', JSON.stringify(notesEta));
 
+            //Setting completed arrays
+    localStorage.setItem('TitleComplete', JSON.stringify(TitleComplete));
+    localStorage.setItem('DetailsComplete', JSON.stringify(DetailsComplete));
+    localStorage.setItem('PriorityComplete', JSON.stringify(PriorityComplete));
+    localStorage.setItem('mnDatesComplete', JSON.stringify(DateComplete));
+    localStorage.setItem('lmnEtaComplete', JSON.stringify(EtaComplete));
+
     location.reload();
 
 }
-
-//end of delete function
-
-//cancel button of editable form
-
-
-//end of cancel button of editable formi
-
-
-//cancel button of editable form
-
-
-// click on editables
 
 
 editcard = (index) => {
