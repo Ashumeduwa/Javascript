@@ -78,13 +78,13 @@ class mNpotes {
     LoadApps = (notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry, mnotesEtanEta, mnFilters) => {
         //loop to set priority
     
-        var mntoday = new Date();
+        var mntoday = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+        var mntoday = (new Date(Date.now() - mntoday)).toISOString().slice(0, -1);
         //Filter upcomming 
 
 
         if (mnFilters == 'Upcomming') {
             let mnDateString = new Date()
-            console.log(mnDateString); //delete it
             mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
                 let cardPriority = element;
                 notesTitle.forEach((Element, index) => { //loop to [print] elements
@@ -156,7 +156,7 @@ class mNpotes {
         //Filtercondition All
 
         if (mnFilters == 'All') {
-            var mnDateString = mntoday.toISOString().substring(0, 10);
+            var mnDateString = mntoday.substring(0, 10);
 
             mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
                 let cardPriority = element;
@@ -194,8 +194,9 @@ class mNpotes {
         // Filter Today condition
 
         if (mnFilters == 'Today') {
-            var mnDateString = mntoday.toISOString().substring(0, 10);
-
+            
+            let mnDateString = mntoday.substring(0, 10);
+            console.log(mnDateString);
             mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
                 let cardPriority = element;
                 notesTitle.forEach((Element, index) => { //loop to [print] elements
@@ -250,7 +251,7 @@ class mNpotes {
 
 
 // Add event for sumbit button abd calling functions
-let btnclick = document.querySelector('.btn-primary');
+let btnclick = document.querySelector('#mnbutton');
 
 btnclick.addEventListener('click', (e) => {
 

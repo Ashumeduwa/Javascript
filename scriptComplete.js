@@ -10,6 +10,7 @@ TitleCompleteObj = () => {
 let x = document.getElementById('mnbuttonComplete').addEventListener('click', loadcompletedContent)
 
 function loadcompletedContent () {
+    
     let mnComplete = document.getElementById('mnComplete');
     let mnLoadLocalComplete = TitleCompleteObj();
     TitleComplete = mnLoadLocalComplete.TitleComplete;
@@ -18,11 +19,22 @@ function loadcompletedContent () {
     DateComplete = mnLoadLocalComplete.DateComplete;
     EtaComplete = mnLoadLocalComplete.EtaComplete;
     // console.log(TitleComplete,DetailsComplete,PriorityComplete,DateComplete,EtaComplete);
+    mnComplete.innerHTML = `
+    
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Descriptio</th>
+          <th scope="col">Priority</th>
+          <th scope="col">ETA</th>
+          <th scope="col">Created Date</th>
+        </tr>
+      </thead>
 
-    console.log(TitleComplete[1]);
+    `;
     TitleComplete.forEach((element, index) => {
-        console.log(TitleComplete[index])
-        let htmlString = `
+    let htmlString = `
 
     <tbody>
       <tr>
@@ -38,4 +50,13 @@ function loadcompletedContent () {
       `
         mnComplete.innerHTML += htmlString;
     });
+
+    let showData = document.querySelector('.showdata');
+    mnStyle = window.getComputedStyle(showData);
+    mndisplay = mnStyle.getPropertyValue('display');
+    if(mndisplay=='none'){
+        showData.style = 'display:block'
+    } else {
+        showData.style = 'display:none'
+    }
 }
