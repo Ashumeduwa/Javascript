@@ -101,7 +101,7 @@ a.btn.btn-primary {
 }
 
 
-a.btn.btn-primary:hover {
+a.btn-primary-hover:hover {
     display: none!important;
     
 }

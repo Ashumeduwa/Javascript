@@ -1,10 +1,12 @@
+const mnFilterCheck = localStorage.mnFilter;
 mnLoadLocal = () => {
     var notesTitle = JSON.parse(localStorage.getItem("Title"));
     var notesDetails = JSON.parse(localStorage.getItem("Details"));
     var notesPriority = JSON.parse(localStorage.getItem("Priority"));
     var notesDate = JSON.parse(localStorage.getItem("mnDates"));
     var notesEta = JSON.parse(localStorage.getItem("lmnEta"));
-    return { notesTitle, notesDetails, notesPriority, notesDate, notesEta };
+
+    return { notesTitle, notesDetails, notesPriority, notesDate, notesEta};
 }
 
 
@@ -57,42 +59,168 @@ class mNpotes {
         localStorage.setItem('lmnEta', JSON.stringify(notesEta));
         cardBody.innerHTML = "";
         let mnPriorityArry = ['Urgent priority task', 'Task', 'Notes', 'Normal Task (EOD)', 'Weekly task']
-        this.LoadApps(notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry, notesEta);
+        // this.LoadApps(notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry, notesEta);
         //end of initiating local storage and saving
+        localStorage.setItem('mnFilter','All');
+        location.reload();
         mnNotify("Success");
 
     }
 
     // Adding new call function loadApps () to load cards based on priority
-    LoadApps = (notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry, mnotesEtanEta) => {
+    LoadApps = (notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry, mnotesEtanEta, mnFilters) => {
         //loop to set priority
+    
+        var mntoday = new Date();
+        //Filter upcomming 
+
+
+        if (mnFilters == 'Upcomming') {
+            let mnDateString = new Date()
+            console.log(mnDateString); //delete it
+            mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
+                let cardPriority = element;
+                notesTitle.forEach((Element, index) => { //loop to [print] elements
+    
+                    let ComparemnotesEtanEta = new Date(mnotesEtanEta[index])
+                    if (ComparemnotesEtanEta > mnDateString) {
+                        let cardBody = document.getElementById('card-body')
+                        if (cardPriority == notesPriority[index]) {
+                            let htmlString = `
+                        <div class="card-body">
+                        <div class="mnoptions">
+                        <img src="/images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
+                        <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
+                        </div>
+                        <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
+                        <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
+                        <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
+                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
+                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
+                        </div>
+                `
+                            cardBody.innerHTML += htmlString;
+                        }
+                    }
+    
+    
+                })
+            });
+        }
+
+
+
+      //Filtercondition Overdue
+
+      if (mnFilters == 'Overdue') {
+        let mnDateString = new Date()
+        console.log(mnDateString); //delete it
         mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
             let cardPriority = element;
             notesTitle.forEach((Element, index) => { //loop to [print] elements
-                // console.log(notesTitle[index]);
-                let cardBody = document.getElementById('card-body')
-                if (cardPriority == notesPriority[index]) {
-                    let htmlString = `
+
+                let ComparemnotesEtanEta = new Date(mnotesEtanEta[index])
+                if (ComparemnotesEtanEta < mnDateString) {
+                    let cardBody = document.getElementById('card-body')
+                    if (cardPriority == notesPriority[index]) {
+                        let htmlString = `
+                    <div class="card-body">
+                    <div class="mnoptions">
+                    <img src="/images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
+                    <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
+                    </div>
+                    <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
+                    <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
+                    <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
+                    <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
+                    <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
+                    </div>
+            `
+                        cardBody.innerHTML += htmlString;
+                    }
+                }
+
+
+            })
+        });
+    }
+
+
+        //Filtercondition All
+
+        if (mnFilters == 'All') {
+            var mnDateString = mntoday.toISOString().substring(0, 10);
+
+            mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
+                let cardPriority = element;
+                notesTitle.forEach((Element, index) => { //loop to [print] elements
+                    // console.log(notesTitle[index]);
+                    // let compareDate = new Date( mnotesEtanEta[index]);
+                    // mntodayDate = new Date();
+
+
+                    let cardBody = document.getElementById('card-body')
+                    if (cardPriority == notesPriority[index]) {
+                        let htmlString = `
                 <div class="card-body">
                 <div class="mnoptions">
                 <img src="/images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
                 <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
-                
                 </div>
-                
                 <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                 <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                 <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
-               
-                
-                <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]}">${notesPriority[index]}</a>
+                <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
                 <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
-              </div>
+                </div>
+        `
+                        cardBody.innerHTML += htmlString;
+                    }
+
+
+
+                })
+            });
+        }
+
+
+        // Filter Today condition
+
+        if (mnFilters == 'Today') {
+            var mnDateString = mntoday.toISOString().substring(0, 10);
+
+            mnPriorityArry.forEach((element, index) => {  //for loop to print all arrays based on priority
+                let cardPriority = element;
+                notesTitle.forEach((Element, index) => { //loop to [print] elements
+                    // console.log(notesTitle[index]);
+                    // let compareDate = new Date( mnotesEtanEta[index]);
+                    // mntodayDate = new Date();
+
+                    if (mnotesEtanEta[index] == mnDateString) {
+                        let cardBody = document.getElementById('card-body')
+                        if (cardPriority == notesPriority[index]) {
+                            let htmlString = `
+                        <div class="card-body">
+                        <div class="mnoptions">
+                        <img src="/images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
+                        <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
+                        </div>
+                        <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
+                        <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
+                        <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
+                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
+                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
+                        </div>
                 `
-                    cardBody.innerHTML += htmlString;
-                }
-            })
-        });
+                            cardBody.innerHTML += htmlString;
+                        }
+                    }
+
+
+                })
+            });
+        }
+
     }
 
     mnValidation(mnobject) {
@@ -163,7 +291,7 @@ mnNotify = (fn) => {
 
 //loading locdcontent function
 window.onload = (event) => {
-    loadcontent();
+    loadcontent(mnFilterCheck);
 };
 
 //clearing localstorage 
@@ -173,23 +301,29 @@ clearContent = () => {
 }
 
 //load conetne function 
-loadcontent = () => {
+loadcontent = (mnFilters) => {
 
     let mnstorageValue = mnLoadLocal();
     let notesTitle = mnstorageValue.notesTitle;
     let notesDetails = mnstorageValue.notesDetails;
     let notesPriority = mnstorageValue.notesPriority;
-    let notesDate = mnstorageValue.notesDate
-    let notesEta = mnstorageValue.notesEta
+    let notesDate = mnstorageValue.notesDate;
+    let notesEta = mnstorageValue.notesEta;
+    if(typeof(mnFilters) == 'undefined'){
+        var mnFilters = 'All';
+
+    }
+    console.log(mnFilters)
+
 
     if (notesTitle == null) { } else {
         let mnPriorityArry = ['Urgent priority task', 'Task', 'Notes', 'Normal Task (EOD)', 'Weekly task']
         let mnobject1 = new mNpotes(notesTitle, notesDetails, notesPriority, notesEta);
-        mnobject1.LoadApps(notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry, notesEta);
+        mnobject1.LoadApps(notesTitle, notesDetails, notesPriority, notesDate, mnPriorityArry, notesEta, mnFilters);
     }
 }
 
-//clear everything
+//clear everything  
 
 let btnclickClear = document.getElementById('mnbuttonClear')
 btnclickClear.addEventListener('click', () => {
@@ -315,15 +449,7 @@ updateSave = (index) => {
 
 // Filters
 
-let mnCheckBox = document.getElementsByClassName('mnFilterNow');
-
-
-Array.from(mnCheckBox).forEach(function(element,index) {
-    element.addEventListener('change', ()=>{
-        console.log(mnCheckBox[index].value);
-        if(mnCheckBox[index].value == 'Today') 
-        {
-            console.log('First button pressed');
-        }
-    });
-  });   
+document.getElementById("mnOptionsFilter").addEventListener('change', (event) => {
+    localStorage.setItem('mnFilter',event.target.value);
+    location.reload();
+  });

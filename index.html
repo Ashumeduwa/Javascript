@@ -77,18 +77,13 @@
     </div>
 
     <div class="mnfilters">
-      <div class="form-check form-switch">
-        <input class="form-check-input mnFilterNow" type="checkbox" id="flexSwitchCheckDefault" value="Today">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Today</label>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input mnFilterNow" type="checkbox" id="flexSwitchCheckDefault"  value="Fdate">>
-        <label class="form-check-label" for="flexSwitchCheckDefault">Future dated</label>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input mnFilterNow" type="checkbox" id="flexSwitchCheckDefault"  value="Overdue">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Overdue</label>
-      </div>
+      <select class="form-control form-control-sm mb-2" id="mnOptionsFilter">
+        <option> Select Filter</option>
+        <option value='All'>All</option>
+        <option value='Today'>Today</option>
+        <option value='Upcomming'>Upcomming</option>
+        <option value='Overdue'>Overdue</option>
+      </select>
     </div>
   </div>
     <!-- date picker -->
