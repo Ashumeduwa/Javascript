@@ -38,7 +38,7 @@ function loadcompletedContent () {
 
     <tbody>
       <tr>
-        <td scope="row">${[index]}</td>
+        <td scope="row">${[index+1]}</td>
         <td><b>${TitleComplete[index]}</b></td>
         <td>${DetailsComplete[index]}</td>
         <td>${PriorityComplete[index]}</td>

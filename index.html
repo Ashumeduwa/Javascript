@@ -16,10 +16,8 @@
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand">Ashutosh's Task</a>
-      <form class="d-flex" role="search">
-        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button> -->
-      </form>
+      <button class="btn btn-primary" id="mnbuttonClear" type="submit">Clear All</button>
+      
     </div>
   </nav>
 
@@ -83,7 +81,7 @@
       <div class="noteButtons">
         <div class="col-12">
           <button class="btn btn-primary" id="mnbutton" type="submit">Add Task</button>
-          <button class="btn btn-primary" id="mnbuttonClear" type="submit">Clear All</button>
+          
           
           
         </div>
@@ -159,6 +157,14 @@
         <button class="btn btn-primary" id="mnbuttonCancel" type="submit">Cancel</button>
       </div> -->
     </div>
+  </div>
+</div>
+
+<div class="mnoverlayMain">
+  <div class="overlaySection">
+    <p class="overlay"> Are you Sure want to delete everything from localstorage?</p>
+    <button class="btn btn-primary" id="mnbuttonClearYes" type="submit">Yes</button>
+    <button class="btn btn-primary" id="mnbuttonClearNo" type="submit">No</button>
   </div>
 </div>
 

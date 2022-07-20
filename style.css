@@ -46,7 +46,15 @@ button#mnbuttonComplete {
     transition: height 1s;
 }
 
+a.mnComplete {
+    padding: 2px;
+    display: block;
+    width: 80px;
+    background: darkgrey;
+    font-size: 12px;
+    color: white;
 
+}
 
 .mnbody{
     
@@ -55,7 +63,8 @@ button#mnbuttonComplete {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0px 32px;
-
+    border-top: 0.5px solid;
+    padding: 16px 0px;
 }
 
 
@@ -63,8 +72,6 @@ button#mnbuttonComplete {
 .card-body {
     width: 20%;
     min-width: 300px;
-    /* max-width: 350px; */
-    border-top: 0.5px solid;
     background: #F8F8F8F8;
     padding: 8px;
     margin: 24px 8px;
@@ -106,17 +113,16 @@ a.btnNormal{
     border-bottom: 1px solid #0303;
 }
 
-a.mnComplete {
+/* a.mnComplete {
     display: none;
     
-}
+} */
 a.btn.btn-primary {
     position: absolute;
-    bottom: -50px;
-    right: 3px;
+    top: -30px;
     border: none;
     font-size: inherit;
-    
+    right:0px;
 
 }
 
@@ -125,10 +131,10 @@ a.btn.btn-primary {
 }
 
 
-a.btn-primary-hover:hover {
+/* a.btn-primary-hover:hover {
     display: none!important;
     
-}
+} */
 
 a.btn.btn-primary:hover  + a.mnComplete{
     display: block;
@@ -286,3 +292,27 @@ th {
     display: non;
     display: none;
 }
+
+/* ---------------------------------confirmation-------------------- */
+.mnoverlayMain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background: rgb(236, 237, 254,0.9);
+    justify-content: center;
+    top: 0;
+    display: none;
+}
+
+.overlaySection {
+    top: 40%;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    padding: 10px;
+    border-radius: 13px;
+    background: #F8F8F8;
+}
+

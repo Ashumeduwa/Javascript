@@ -4,9 +4,22 @@ document.querySelector('.mnCreateImage').addEventListener("click",()=>{
     mnStyle = window.getComputedStyle(mnheader);
     mnHeight = mnStyle.getPropertyValue('height');
     if(mnHeight == '0px'){
-        mnheader.style = 'height:230px'
+        mnheader.style = 'height:230px';
     } else {
-        mnheader.style = 'height:0px'
+        mnheader.style = 'height:0px';
     }
 
+})
+
+document.getElementById('mnbuttonClearYes').addEventListener('click',()=>{
+    let mnCondition = document.querySelector('.mnoverlayMain')
+    localStorage.clear();
+    mnCondition.style = 'display:none'
+    location.reload();
+   
+})
+
+document.getElementById('mnbuttonClearNo').addEventListener('click',()=>{
+let mnCondition = document.querySelector('.mnoverlayMain')
+mnCondition.style = 'display:none'
 })
