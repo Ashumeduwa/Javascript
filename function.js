@@ -23,3 +23,18 @@ document.getElementById('mnbuttonClearNo').addEventListener('click',()=>{
 let mnCondition = document.querySelector('.mnoverlayMain')
 mnCondition.style = 'display:none'
 })
+
+
+document.getElementById('mnbuttonClearName').addEventListener('click',()=>{
+    if(document.getElementById('txtTitleName').value !== ""){
+        localStorage.setItem('Name',document.getElementById('txtTitleName').value)
+        document.querySelector('.mnoverlayNameMain').style = 'display:none'
+        location.reload();
+    }
+});
+
+document.querySelector('.navbar-brand').innerText = localStorage.getItem('Name')+"'s Task"
+
+if (localStorage.getItem('Name')== null){
+    document.querySelector('.mnoverlayNameMain').style = 'display:block'
+}
