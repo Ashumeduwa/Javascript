@@ -106,7 +106,7 @@ class mNpotes {
                             let htmlString = `
                         <div class="card-body">
                         <div class="mnoptions">
-                        <img src="images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
+                        <img src="images/edit.png" id="0" onclick="editcard(${[index]})" class="editButton"><div class="timelines"></div>
                         <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
                         </div>
                         <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
@@ -114,7 +114,7 @@ class mNpotes {
                         <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
                         <a href="#" id="${[index]}" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
         
-                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(0)" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
+                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
                         </div>
                 `
                             cardBody.innerHTML += htmlString;
@@ -144,14 +144,14 @@ class mNpotes {
                         let htmlString = `
                     <div class="card-body">
                     <div class="mnoptions">
-                    <img src="images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
+                    <img src="images/edit.png" id="0" onclick="editcard(${[index]})" class="editButton"><div class="timelines"></div>
                     <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
                     </div>
                     <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                     <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                     <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
                     <a href="#" id="${[index]}" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
-                    <a href="#" id="${[index]}" onclick="mnDeleteNotes(0)" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
+                    <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
                     </div>
             `
                         cardBody.innerHTML += htmlString;
@@ -182,14 +182,14 @@ class mNpotes {
                         let htmlString = `
                 <div class="card-body">
                 <div class="mnoptions">
-                <img src="images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
+                <img src="images/edit.png" id="0" onclick="editcard(${[index]})" class="editButton"><div class="timelines"></div>
                 <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
                 </div>
                 <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                 <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                 <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
                 <a href="#" id="${[index]}" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
-                <a href="#" id="${[index]}" onclick="mnDeleteNotes(0)" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
+                <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
                 </div>
         `
                         cardBody.innerHTML += htmlString;
@@ -221,14 +221,14 @@ class mNpotes {
                             let htmlString = `
                         <div class="card-body">
                         <div class="mnoptions">
-                        <img src="images/edit.png" id="0" onclick="editcard(0)" class="editButton"><div class="timelines"></div>
+                        <img src="images/edit.png" id="0" onclick="editcard(${[index]})" class="editButton"><div class="timelines"></div>
                         <p class="cardETA"> ETA : ${mnotesEtanEta[index]}</p>
                         </div>
                         <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                         <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                         <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
                         <a href="#" id="${[index]}" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
-                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(0)" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
+                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
                         </div>
                 `
                             cardBody.innerHTML += htmlString;
