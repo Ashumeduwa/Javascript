@@ -1,3 +1,13 @@
+// Global variable and page initialization steps
+var mnDefaultDate = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+mnDefaultDate = (new Date(Date.now() - mnDefaultDate)).toISOString().slice(0, -1);
+mnDefaultDate = mnDefaultDate.substring(0, 10);
+document.getElementById('mnDate').value = mnDefaultDate
+
+// end of Global variable and page initialization steps
+
+// Initializing localstorage data globally as a Json from string
+
 const mnFilterCheck = localStorage.mnFilter;
 mnLoadLocal = () => {
     var notesTitle = JSON.parse(localStorage.getItem("Title"));
@@ -102,8 +112,9 @@ class mNpotes {
                         <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                         <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                         <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
-                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
-                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
+                        <a href="#" id="${[index]}" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
+        
+                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(0)" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
                         </div>
                 `
                             cardBody.innerHTML += htmlString;
@@ -139,8 +150,8 @@ class mNpotes {
                     <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                     <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                     <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
-                    <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
-                    <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
+                    <a href="#" id="${[index]}" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
+                    <a href="#" id="${[index]}" onclick="mnDeleteNotes(0)" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
                     </div>
             `
                         cardBody.innerHTML += htmlString;
@@ -177,8 +188,8 @@ class mNpotes {
                 <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                 <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                 <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
-                <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
-                <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
+                <a href="#" id="${[index]}" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
+                <a href="#" id="${[index]}" onclick="mnDeleteNotes(0)" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
                 </div>
         `
                         cardBody.innerHTML += htmlString;
@@ -216,8 +227,8 @@ class mNpotes {
                         <h7 class="card-title"><b>${notesTitle[index]}</b></h7>
                         <p class="card-title cardPriority">Created on: ${notesDate[index]}</p>
                         <p class="card-text" style="white-space: pre-line" >${notesDetails[index]}</p>
-                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
-                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(${[index]})" class="btn btn-primary btn${notesPriority[index]} mnComplete">Completed</a>
+                        <a href="#" id="${[index]}" class="btn btn-primary btn-primary-hover btn${notesPriority[index]}">${notesPriority[index]}</a>
+                        <a href="#" id="${[index]}" onclick="mnDeleteNotes(0)" class="btn btn-primaryComplete btn${notesPriority[index]} mnComplete">Complete</a>
                         </div>
                 `
                             cardBody.innerHTML += htmlString;
@@ -335,8 +346,9 @@ loadcontent = (mnFilters) => {
 
 let btnclickClear = document.getElementById('mnbuttonClear')
 btnclickClear.addEventListener('click', () => {
-    localStorage.clear();
-    location.reload();
+    
+    let mnCondition = document.querySelector('.mnoverlayMain')
+    mnCondition.style = 'display:block'
 })
 
 //end clear everything
