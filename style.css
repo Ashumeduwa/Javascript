@@ -10,9 +10,20 @@
     text-align: center;
 }
 
+/* .container-fluid {     overflow: hidden;     max-height: 30px; } */
+
 img.mnCreateImage {
     width: 10%;
+    animation: mymove 2s;
+    animation-iteration-count: infinite;
 }
+
+img.mnCreateImage:hover{
+    transform: scale(1.1);
+    transition: transform 1s;
+    cursor: pointer;
+}
+
 
 .mnfilters {
     padding-top: 5%;
@@ -64,24 +75,43 @@ a.mnComplete {
     justify-content: center;
     margin: 0px 32px;
     border-top: 0.5px solid;
-    padding: 16px 0px;
+    padding: 16px 0px;  
+
+    
 }
 
+/* .card-body:hover {
+    transition: transform 1s;
+    transform: scale(1.1);
+} */
 
+.navbar-brand{
+    animation: move 1s  ;
+    animation-direction: alternate;
+    animation-delay: 2s;
+}
+
+@keyframes move {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+  }
 
 .card-body {
+
     width: 20%;
-    min-width: 300px;
+    min-width: 250px;
     background: #F8F8F8F8;
     padding: 8px;
-    margin: 24px 8px;
+    margin: 24px 16px;
     font-size: 14px;
-    padding: 8px!important; 
+    padding: 8px!important;
     flex: inherit;
     justify-content: center;
     position: relative;
     box-shadow: 10px 10px 5px #aaaaaa;
     word-wrap: break-word;
+
     /* min-height: 150px; */
 }
 
@@ -95,10 +125,25 @@ a.mnComplete {
 }
 
 
-a.btnUrgent {
+a.btnUrgent.btn-primary {
     background: red;
+    animation: heart 1s infinite;
 }
 
+@keyframes heart {
+    0% {
+        transform: scale(1);
+      }
+      20% {
+        transform: scale(1.1);
+      }
+      40% {
+        transform: scale(1);
+      }
+      60% {
+        transform: scale(1.2);
+      }
+  }
 a.btnNormal{
     background-color: #14A06B;
 
@@ -342,4 +387,8 @@ th {
 
 button#mnbuttonClearName {
     margin-top: 8px;
+}
+
+.mnDownloadImage{
+    width: 20px;
 }
