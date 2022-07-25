@@ -25,10 +25,12 @@ function loadcompletedContent () {
         <tr>
           <th scope="col">#</th>
           <th scope="col">Title</th>
-          <th scope="col">Descriptio</th>
+          <th scope="col">Description</th>
           <th scope="col">Priority</th>
           <th scope="col">ETA</th>
-          <th scope="col">Created Date</th>
+          <th scope="col">Created Date
+          
+          </th>
         </tr>
       </thead>
 
@@ -52,11 +54,15 @@ function loadcompletedContent () {
     });
 
     let showData = document.querySelector('.showdata');
-    mnStyle = window.getComputedStyle(showData);
+    mnStyle = window.getComputedStyle(showData); //get all css values
     mndisplay = mnStyle.getPropertyValue('display');
-    if(mndisplay=='none'){
+    if(mndisplay=='none'){ //if display is nono
         showData.style = 'display:block'
     } else {
         showData.style = 'display:none'
     }
 }
+
+document.querySelector('.mnDownloadImage').addEventListener('click',()=>{
+  console.log('download will work')
+})
